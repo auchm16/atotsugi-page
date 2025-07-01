@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title data-jp="アトツギ縁日販売商品" data-en="Items for sale at the Atotsugi Festival">アトツギ縁日販売商品</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    body {
+      font-family: "Noto Serif JP", serif;
+      background: url("haikei3.jpg") center center / cover no-repeat fixed;
+      background-color: #000;
+      color: #111;
+    }
+    .lang-toggle-fixed {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: transparent;
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border: 2px solid white;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1000;
+    }
+    .logo-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+    .logo-row img.logo {
+      height: 48px;
+      width: auto;
+    }
+    .logo-separator {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #fff;
+    }
+    .header-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0;
+      color: white;
+      text-shadow: 1px 1px 2px black;
+    }
+    main {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin: 2rem auto;
+      max-width: 800px;
+      padding: 0 1rem;
+    }
+    .card {
+      background: #fff3cd url("yatai-banner.png") top center no-repeat;
+      background-size: 100% 60px;
+      padding: 70px 1rem 1rem;
+      border: 5px solid #eab308;
+      border-radius: 16px;
+      color: #111;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    }
+    .noren {
+      background: #b91c1c;
+      color: white;
+      font-weight: bold;
+      padding: 0.5rem;
+      border-radius: 5px;
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+    .product-image {
+      width: 100%;
+      border-radius: 12px;
+      cursor: pointer;
+      border: 2px solid #b91c1c;
+    }
+    .price {
+      font-weight: bold;
+      background: #fff8dc;
+      margin-top: 0.5rem;
+      padding: 0.3rem;
+      color: #b45309;
+    }
+    footer {
+      color: #222;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    footer a,
+    footer span {
+      color: #b91c1c;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+      user-select: none;
+    }
+    footer img {
+      margin-top: 0.5rem;
+      width: 100px;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    .modal-content {
+      background: white;
+      padding: 2rem 1rem;
+      border-radius: 20px;
+      max-width: 600px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 0 15px #ffffcc, 0 0 30px #ffffcc, 0 0 45px #ffffcc;
+      border: 4px solid #ffffcc;
+      position: relative;
+      color: #222;
+    }
+    .modal-content img {
+      max-width: 70%;
+      height: auto;
+      margin-bottom: 1rem;
+      border-radius: 12px;
+      border: 3px solid #b91c1c;
+    }
+    .modal-content h2 {
+      margin: 0.5rem 0;
+      color: #222;
+      font-size: 1.5rem;
+      text-shadow: 0 0 5px white;
+    }
+    .modal-content p {
+      font-size: 1rem;
+      color: #333;
+    }
+    .modal-close {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: #b91c1c;
+      color: white;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      line-height: 36px;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    }
+    @media screen and (max-width: 480px) {
+      .title {
+        font-size: 1.2rem;
+      }
+      .noren {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="lang-toggle-fixed" onclick="toggleLanguage()">JP / EN</div>
+  <div class="logo-row">
+    <img src="アトツギ縁日ロゴ.jpg" alt="アトツギ縁日ロゴ" class="logo" />
+    <span class="logo-separator">×</span>
+    <img src="鳴海餅　キャラクター.png" alt="鳴海餅本店ロゴ" class="logo" />
+  </div>
+  <div class="header-row">
+    <h1 class="title" data-jp="アトツギ縁日販売商品" data-en="Items for sale at the Atotsugi Festival">アトツギ縁日販売商品</h1>
+  </div>
+  <main>
+    <div class="card">
+      <div class="noren" data-jp="アトツギ縁日万寿" data-en="Atotsugi Festival Manju">アトツギ縁日万寿</div>
+      <img class="product-image" src="" alt="アトツギ縁日万寿" onclick="openModal('', {jp: 'アトツギ縁日万寿', en: 'Atotsugi Festival Manju'}, {jp: '商品説明。', en: ''})" />
+      <div class="price">¥220</div>
+    </div>
+
+     <div class="card">
+      <div class="noren" data-jp="カップ入り水羊羹　こし" data-en="Cup-Style Mizu-Yokan(Smooth red bean)">カップ入り水羊羹　こし</div>
+      <img class="product-image" src="koshi.JPG" alt="カップ入り水羊羹　こし" onclick="openModal('koshi.JPG', {jp: 'カップ入り水羊羹　こし', en: 'Cup-Style Mizu-Yokan(Smooth red bean)'}, {jp: '商品説明。', en: ''})" />
+      <div class="price">¥280</div>
+    </div>
+
+     <div class="card">
+      <div class="noren" data-jp="カップ入り水羊羹　抹茶" data-en="Cup-Style Mizu-Yokan(Matcha)">カップ入り水羊羹　抹茶</div>
+      <img class="product-image" src="matcha.JPG" alt="カップ入り水羊羹　抹茶" onclick="openModal('matcha.JPG', {jp: 'カップ入り水羊羹　抹茶', en: 'Cup-Style Mizu-Yokan(Matcha)'}, {jp: '商品説明。', en: ''})" />
+      <div class="price">¥280</div>
+    </div>
+
+     <div class="card">
+      <div class="noren" data-jp="鉾どら焼き" data-en="Float Dorayaki">鉾どら焼き</div>
+      <img class="product-image" src="dorayaki.JPG" alt="鉾どら焼き" onclick="openModal('dorayaki.JPG', {jp: '鉾どら焼き', en: 'Float Dorayaki'}, {jp: '商品説明。', en: ''})" />
+      <div class="price">¥260</div>
+    </div>
+    <!-- 他の商品も同様に必要なら多言語で設定 -->
+  </main>
+  <footer>
+    <p>© 鳴海餅本店 / Narumi Mochi Honten</p>
+    <p>
+      <a href="https://narumi-mochi.jp" target="_blank" data-jp="▶公式ホームページはこちら" data-en="▶Official Website Here">▶公式ホームページはこちら</a>
+    </p>
+    <p>
+      <span data-jp="▶公式インスタグラムはこちら" data-en="▶Official Instagram Here">▶公式インスタグラムはこちら</span>
+    </p>
+    <img src="instaQR.jpg" alt="Instagram QRコード" />
+  </footer>
+  <div class="modal" id="productModal">
+    <div class="modal-close" onclick="closeModal()">×</div>
+    <div class="modal-content">
+      <img id="modalImg" src="" alt="" />
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+    </div>
+  </div>
+  <script>
+    let currentLang = "jp";
+    function toggleLanguage() {
+      currentLang = currentLang === "jp" ? "en" : "jp";
+      document.querySelectorAll("[data-jp][data-en]").forEach((el) => {
+        el.textContent = el.getAttribute("data-" + currentLang);
+      });
+      const titleEl = document.querySelector("title");
+      if (titleEl && titleEl.dataset.jp && titleEl.dataset.en) {
+        document.title = titleEl.dataset[currentLang];
+      }
+    }
+
+    function openModal(imgSrc, titleObj, descObj) {
+      document.getElementById("modalImg").src = imgSrc;
+      document.getElementById("modalTitle").textContent = titleObj[currentLang];
+      document.getElementById("modalDesc").textContent = descObj[currentLang];
+      document.getElementById("productModal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("productModal").style.display = "none";
+    }
+  </script>
+</body>
+</html>
